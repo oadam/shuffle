@@ -1,0 +1,30 @@
+html {
+	background: #eee;
+	max-width: 500px;
+	text-align: center;
+}
+ul {
+	list-style: none;
+}
+li {
+	padding: 0.3em;
+	border: solid 2px grey;
+	margin: 0.1em;
+	background: white;
+	user-select: none;
+	text-transform: uppercase;
+}
+li button {
+	float: right;
+	border: none;
+	color: red;
+}
+
+li:hover {
+	background: ivory;
+}
+
+button {
+	cursor: pointer;
+	background: none;
+}

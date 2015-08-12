@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js"></script>
+<script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="//cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+<script src="https://cdn.rawgit.com/davidbau/seedrandom/released/seedrandom.min.js"></script>
+<script src="main.js"></script>
+<link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+<link rel="icon" href="favicon.ico" />
+<meta charset="utf-8">
+<title>Shuffle</title>
+<meta name="viewport" content="width=device-width">
+</head>
+<body>
+<span class=loading>loading...</span>
+<ul data-bind="foreach: shuffledItems">
+	<li><span data-bind="text: $data"></span><button title="remove" data-bind="click: $root.removeItem">[x]</button></li>
+</ul>
+<form data-bind="submit: addItem">
+	<input autofocus type=text data-bind="textInput: newValue" placeholder="add new user"/>
+</form>
+<hr/>
+<p>The order is deterministic and changes each day.<br> If you change the list, the changes are pushed in real-time to all viewers.</p>
+<footer>Made with love by Olivier</footer>
+</body>
+</html>
