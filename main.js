@@ -37,7 +37,7 @@ if (!match) {
 	  alert('firebaseId is needed');
 }
 var firebaseId = decodeURIComponent(match[1]);
-var firebase = new Firebase(firebaseId);
+var firebase = new Firebase('https://' + firebaseId + '.firebaseio.com');
 var firstValue = true;
 firebase.on('value', function(snapshot) {
 	  if (firstValue) {
