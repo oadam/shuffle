@@ -30,13 +30,20 @@ var viewModel = {
 					          return result;
 						    })
 };
-
-//firebase
-var match = /\?firebaseId=([^&]*)/.exec(location.search);
-if (!match) {
+//http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
+var getParameterByName = function(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+var firebaseId = getParameterByName('firebaseId');
+if (!firebaseId) {
 	  alert('firebaseId is needed');
 }
-var firebaseId = decodeURIComponent(match[1]);
+
+
+
 var firebase = new Firebase('https://' + firebaseId + '.firebaseio.com');
 var firstValue = true;
 firebase.on('value', function(snapshot) {
@@ -59,4 +66,9 @@ $(document).ready(function() {
 		        $('body').children().hide();
 			    $('.loading').show();
 			      }
+				  
+	var title = getParameterByName('title');
+	if (title) {
+		$('h1').text(title);
+	}
 });
