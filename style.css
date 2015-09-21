@@ -1,3 +1,15 @@
+.titleEdit {
+    display: none;    
+}
+
+.editingTitle .titleEdit {
+    display: block;    
+}
+
+.editingTitle .titleView {
+    display: none;
+}
+
 html {
 	background: #eee;
 	max-width: 500px;

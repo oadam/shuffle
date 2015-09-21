@@ -3,7 +3,7 @@
 <head>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js"></script>
 <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
-<script src="//cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+<script src="https://cdn.firebase.com/js/client/2.2.9/firebase.js"></script>
 <script src="https://cdn.rawgit.com/davidbau/seedrandom/released/seedrandom.min.js"></script>
 <script src="main.js"></script>
 <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
@@ -14,14 +14,23 @@
 </head>
 <body>
 <span class=loading>loading...</span>
-<ul data-bind="foreach: shuffledItems">
-	<li><span data-bind="text: $data"></span><button title="remove" data-bind="click: $root.removeItem">[x]</button></li>
-</ul>
-<form data-bind="submit: addItem">
-	<input autofocus type=text data-bind="textInput: newValue" placeholder="add new user"/>
-</form>
-<hr/>
-<p>The order is deterministic and changes each day.<br> If you change the list, the changes are pushed in real-time to all viewers.</p>
-<a href="https://github.com/oadam/shuffle"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+<div class = "workspace">
+	<div class="titleEditor" data-bind="css: { editingTitle: editingTitle }"> 
+		<h2 class="titleView" data-bind="event: { dblclick: editTitle }, text: title() || 'Double click to edit'"></h2>
+		<form class="titleEdit" data-bind="submit: stopEditingTitle">
+			<input autofocus type=text data-bind="value: title, hasFocus: editingTitle" placeholder="Edit Title"/>
+		</form>
+	</div>
+
+	<ul data-bind="foreach: shuffledItems">
+		<li><span data-bind="text: $data"></span><button title="remove" data-bind="click: $root.removeItem">[x]</button></li>
+	</ul>
+	<form data-bind="submit: addItem">
+		<input autofocus type=text data-bind="textInput: newValue" placeholder="add new user"/>
+	</form>
+	<hr/>
+	<p>The order is deterministic and changes each day.<br> If you change the list, the changes are pushed in real-time to all viewers.</p>
+
+</div>
 </body>
 </html>
