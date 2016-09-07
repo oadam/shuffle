@@ -2,33 +2,46 @@ var seed = new Date().toJSON().slice(0,10);
 if (window.console) {
 	  console.log('using seed :' + seed);
 }
+
+function hashString(s) {
+	var hash = 0, i, chr, len;
+	if (s.length === 0) return hash;
+	for (i = 0, len = s.length; i < len; i++) {
+		chr   = s.charCodeAt(i);
+		hash  = ((hash << 5) - hash) + chr;
+		hash |= 0; // Convert to 32bit integer
+	}
+	return hash;
+};
                             
 var viewModel = {
-	  newValue: ko.observable(''),
-	    items: ko.observable([]),
-	      addItem: function() {
-		          var current = this.items().slice();
-			      current.push(this.newValue());
-			          this.newValue('');
-				      this.items(current);
-				        },
-	        removeItem: function(item) {
-			    var current = viewModel.items().slice();
-			        current = current.filter(function(i) {return i != item;});
-				    viewModel.items(current);
-				      },
-		  shuffledItems: ko.pureComputed(function() {
-			      var items = viewModel.items().slice();
-			          items = items.sort();
-				      var result = [];
-				          Math.seedrandom(seed);
-					      while (items.length) {
-						            var index = Math.floor(Math.random() * items.length);
-							          var removed = items.splice(index, 1);
-								        result.push(removed);
-									    }
-					          return result;
-						    })
+	newValue: ko.observable(''),
+	items: ko.observable([]),
+	addItem: function() {
+		var current = this.items().slice();
+		current.push(this.newValue());
+		this.newValue('');
+		this.items(current);
+	},
+	removeItem: function(item) {
+		var current = viewModel.items().slice();
+		current = current.filter(function(i) {return i != item;});
+		viewModel.items(current);
+	},
+	shuffledItems: ko.pureComputed(function() {
+		var items = viewModel.items().map(function(i) {
+			return {
+				label: i,
+				hash: hashString(seed + i)
+			};
+		});
+		items.sort(function(a, b) {
+			return a.hash - b.hash;
+		});
+		return items.map(function(i) {
+			return i.label;
+		});
+	})
 };
 //http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
 var getParameterByName = function(name) {
