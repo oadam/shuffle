@@ -3,17 +3,6 @@ if (window.console) {
 	  console.log('using seed :' + seed);
 }
 
-function hashString(s) {
-	var hash = 0, i, chr, len;
-	if (s.length === 0) return hash;
-	for (i = 0, len = s.length; i < len; i++) {
-		chr   = s.charCodeAt(i);
-		hash  = ((hash << 5) - hash) + chr;
-		hash |= 0; // Convert to 32bit integer
-	}
-	return hash;
-};
-                            
 var viewModel = {
 	newValue: ko.observable(''),
 	items: ko.observable([]),
@@ -32,11 +21,11 @@ var viewModel = {
 		var items = viewModel.items().map(function(i) {
 			return {
 				label: i,
-				hash: hashString(seed + i)
+				hash: sha1(seed + i)
 			};
 		});
 		items.sort(function(a, b) {
-			return a.hash - b.hash;
+			return a.hash.localeCompare(b.hash);
 		});
 		return items.map(function(i) {
 			return i.label;
