@@ -7,9 +7,9 @@ var seed = getSeed();
 setInterval(function() {
 	if (seed != getSeed()) {
 		seed = getSeed();
+		// force refresh
+		viewModel.items(viewModel.items());
 	}
-	// force refresh
-	viewModel.items(viewModel.items());
 }, 1000 * 60);
 
 var viewModel = {
