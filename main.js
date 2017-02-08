@@ -1,7 +1,16 @@
-var seed = new Date().toJSON().slice(0,10);
-if (window.console) {
-	  console.log('using seed :' + seed);
+function getSeed() {
+	return new Date().toJSON().slice(0,10);
 }
+
+var seed = getSeed();
+// check every minute if seed has changed
+setInterval(function() {
+	if (seed != getSeed()) {
+		seed = getSeed();
+	}
+	// force refresh
+	viewModel.items(viewModel.items());
+}, 1000 * 60);
 
 var viewModel = {
 	newValue: ko.observable(''),
