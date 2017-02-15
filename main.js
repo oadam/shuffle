@@ -2,19 +2,15 @@ function getSeed() {
 	return new Date().toJSON().slice(0,10);
 }
 
-var seed = getSeed();
 // check every minute if seed has changed
 setInterval(function() {
-	if (seed != getSeed()) {
-		seed = getSeed();
-		// force refresh
-		viewModel.items(viewModel.items());
-	}
+	viewModel.seed(getSeed());
 }, 1000 * 60);
 
 var viewModel = {
 	newValue: ko.observable(''),
 	items: ko.observable([]),
+	seed: ko.observable(getSeed()),
 	addItem: function() {
 		var current = this.items().slice();
 		current.push(this.newValue());
@@ -27,6 +23,7 @@ var viewModel = {
 		viewModel.items(current);
 	},
 	shuffledItems: ko.pureComputed(function() {
+		var seed = viewModel.seed();
 		var items = viewModel.items().map(function(i) {
 			return {
 				label: i,
