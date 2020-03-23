@@ -15,8 +15,10 @@
 <script src="https://cdn.rawgit.com/emn178/js-sha1/master/build/sha1.min.js"></script>
 <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
 <script src="main.js"></script>
+<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
 <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"      rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
 <link rel="icon" href="favicon.ico" />
 <meta charset="utf-8">
 <title>Shuffle</title>
@@ -25,8 +27,8 @@
 <body>
 <span class=loading>loading...</span>
 <h1>Shuffle</h1>
-<ul data-bind="foreach: shuffledItems">
-	<li><span data-bind="text: $data"></span><button title="remove" data-bind="click: $root.removeItem"><span class="material-icons">close</span></button></li>
+<ul class="mdc-list" data-bind="foreach: shuffledItems">
+	<li class="mdc-list-item"><span class="mdc-list-item__text" data-bind="text: $data"></span><button title="remove" data-bind="click: $root.removeItem"><span class="material-icons">close</span></button></li>
 </ul>
 <form data-bind="submit: addItem">
 	<input autofocus type=text data-bind="textInput: newValue" placeholder="add new user"/>
