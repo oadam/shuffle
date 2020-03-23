@@ -1,33 +1,15 @@
- html {
-	background: white;
+.container{
 	max-width: 500px;
-	text-align: center;
 	margin: 0 auto;
-}/*
-ul {
-	list-style: none;
-	padding: 0;
 }
-li {
-	padding: 0.3em;
-	border: solid 2px grey;
-	margin: 0.1em;
-	background: white;
-	user-select: none;
-	text-transform: uppercase;
+p{
+	text-align: center;
 }
-li button {
-	float: right;
-	border: none;
-	color: red;
+h1{
+	text-align: center;
 }
 
-li:hover {
-	background: ivory;
+form{
+	display: flex;
+	justify-content: center;
 }
-
-button {
-	cursor: pointer;
-	background: none;
-}
- */
