@@ -31,17 +31,16 @@
 	<li class="mdc-list-item"><span class="mdc-list-item__text" data-bind="text: $data"></span><button title="remove" data-bind="click: $root.removeItem"><span class="material-icons">close</span></button></li>
 </ul>
 <form data-bind="submit: addItem">
-	<input autofocus type=text data-bind="textInput: newValue" placeholder="add new user"/>
 	<div class="mdc-text-field mdc-text-field--outlined">
-  <input class="mdc-text-field__input" id="text-field-hero-input" autofocus type=text data-bind="textInput: newValue">
-  <div class="mdc-notched-outline">
-    <div class="mdc-notched-outline__leading"></div>
-    <div class="mdc-notched-outline__notch">
-      <label for="text-field-hero-input" class="mdc-floating-label">Add new user</label>
-    </div>
-    <div class="mdc-notched-outline__trailing"></div>
-  </div>
-</div>
+  		<input class="mdc-text-field__input" id="text-field-hero-input" autofocus type=text data-bind="textInput: newValue">
+  		<div class="mdc-notched-outline">
+    			<div class="mdc-notched-outline__leading"></div>
+    				<div class="mdc-notched-outline__notch">
+      					<label for="text-field-hero-input" class="mdc-floating-label">Add new user</label>
+    				</div>
+    			<div class="mdc-notched-outline__trailing"></div>
+  		</div>
+	</div>
 </form>
 <hr/>
 <p>The order is deterministic and changes each day.<br> If you change the list, the changes are pushed in real-time to all viewers.</p>
