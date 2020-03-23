@@ -16,6 +16,7 @@
 <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
 <script src="main.js"></script>
 <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"      rel="stylesheet">
 <link rel="icon" href="favicon.ico" />
 <meta charset="utf-8">
 <title>Shuffle</title>
@@ -25,7 +26,7 @@
 <span class=loading>loading...</span>
 <h1>Shuffle</h1>
 <ul data-bind="foreach: shuffledItems">
-	<li><span data-bind="text: $data"></span><button title="remove" data-bind="click: $root.removeItem">[x]</button></li>
+	<li><span data-bind="text: $data"></span><button title="remove" data-bind="click: $root.removeItem"><span class="material-icons">close</span></button></li>
 </ul>
 <form data-bind="submit: addItem">
 	<input autofocus type=text data-bind="textInput: newValue" placeholder="add new user"/>
