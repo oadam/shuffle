@@ -32,16 +32,16 @@
 		<li class="mdc-list-item"><span class="mdc-list-item__text" data-bind="text: $data"></span><button title="remove" data-bind="click: $root.removeItem" class="mdc-list-item__meta mdc-icon-button material-icons">close</button></li>
 	</ul>
 </div>
-<form data-bind="submit: addItem">
+<form data-bind="submit: addItem" style="margin-top: 8px;">
 	<div class="mdc-text-field mdc-text-field--outlined">
-  		<input class="mdc-text-field__input" id="text-field-hero-input" autofocus type=text data-bind="textInput: newValue">
-  		<div class="mdc-notched-outline">
-    			<div class="mdc-notched-outline__leading"></div>
-    				<div class="mdc-notched-outline__notch">
-      					<label for="text-field-hero-input" class="mdc-floating-label">Add new user</label>
-    				</div>
-    			<div class="mdc-notched-outline__trailing"></div>
-  		</div>
+	  <input class="mdc-text-field__input" id="text-field-hero-input" type=text data-bind="textInput: newValue">
+	  <div class="mdc-notched-outline">
+	    <div class="mdc-notched-outline__leading"></div>
+	    <div class="mdc-notched-outline__notch">
+	      <label for="text-field-hero-input" class="mdc-floating-label">Add new user</label>
+	    </div>
+	    <div class="mdc-notched-outline__trailing"></div>
+	  </div>
 	</div>
 </form>
 <hr/>
